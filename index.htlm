@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr Local — Appels entrants pour les entreprises d'isolation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700;900&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* =============================================
+   DESIGN SYSTEM — BÂTIMENT / TERRAIN / CONFIANCE
+   Fond clair · Bleu ardoise · Jaune chantier
+   ============================================= */
+
+:root {
+  --blue:      #1B4B82;
+  --blue-dark: #163d6b;
+  --blue-soft: #EEF4FC;
+  --yellow:    #F0A500;
+  --yellow-lt: #FFF8E7;
+  --bg:        #F7F5F2;
+  --bg-alt:    #EDEAE5;
+  --border:    #D6D0C8;
+  --text:      #1C1C1C;
+  --muted:     #6B6B6B;
+  --white:     #FFFFFF;
+  --green:     #2A7D4F;
+  --green-bg:  #EAF5EF;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* ─── TOPBAR ─── */
+.topbar {
+  background: var(--blue);
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.topbar-left {
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  font-weight: 400;
+}
+.topbar-left strong { color: #fff; }
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.topbar-right a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.topbar-right a:hover { color: var(--yellow); }
+.topbar-phone {
+  background: var(--yellow);
+  color: var(--text) !important;
+  padding: 6px 16px;
+  font-weight: 600 !important;
+}
+.topbar-phone:hover { background: #d99400; color: var(--text) !important; }
+
+/* ─── NAV ─── */
+nav {
+  background: var(--white);
+  border-bottom: 2px solid var(--border);
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-mark {
+  background: var(--blue);
+  color: #fff;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 20px;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  letter-spacing: -1px;
+}
+.logo-text {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+.logo-text span { color: var(--blue); }
+.logo-sub {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 400;
+  display: block;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  margin-top: 1px;
+}
+.nav-cta {
+  background: var(--blue);
+  color: var(--white);
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 28px;
+  text-decoration: none;
+  border: 2px solid var(--blue);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-cta:hover {
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
+}
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--white);
+  border-bottom: 2px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+.hero-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 72px 40px 80px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 72px;
+  align-items: center;
+}
+
+/* Diagonal accent */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 340px; height: 100%;
+  background: var(--blue-soft);
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+.hero-inner { position: relative; z-index: 1; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--yellow-lt);
+  border: 1px solid var(--yellow);
+  color: #8a5e00;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-badge::before { content: '●'; color: var(--yellow); font-size: 8px; }
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(38px, 4.5vw, 58px);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--text);
+  margin-bottom: 22px;
+  letter-spacing: -1px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--blue);
+  position: relative;
+}
+.hero h1 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px; left: 0; right: 0;
+  height: 4px;
+  background: var(--yellow);
+  opacity: 0.6;
+}
+
+.hero-sub {
+  font-size: 17px;
+  color: var(--muted);
+  margin-bottom: 36px;
+  max-width: 500px;
+  line-height: 1.7;
+}
+.hero-sub strong { color: var(--text); font-weight: 600; }
+
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--blue);
+  color: var(--white);
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 16px 36px;
+  text-decoration: none;
+  border: 2px solid var(--blue);
+  transition: all 0.2s;
+}
+.btn-primary:hover {
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(27,75,130,0.25);
+}
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid var(--yellow);
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+.btn-secondary:hover { color: var(--blue-dark); }
+
+.hero-reassurance {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.reassure-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.reassure-item .check {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Hero card */
+.hero-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: relative;
+}
+.hero-card-header {
+  background: var(--blue);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-card-header-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #2ECC71;
+  animation: pulse-green 2s infinite;
+}
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(46,204,113,0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(46,204,113,0); }
+}
+.hero-card-header-text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+.hero-card-body { padding: 24px; }
+
+.metric-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.metric-row:last-child { border-bottom: none; padding-bottom: 0; }
+.metric-icon {
+  width: 40px; height: 40px;
+  background: var(--blue-soft);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.metric-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.metric-value {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+.metric-value span { color: var(--blue); }
+.metric-desc {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+/* ─── PROOF BAR ─── */
+.proof-bar {
+  background: var(--yellow-lt);
+  border-top: 2px solid var(--yellow);
+  border-bottom: 2px solid var(--yellow);
+  padding: 18px 40px;
+}
+.proof-bar-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.proof-stat {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.proof-num {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--blue);
+  line-height: 1;
+}
+.proof-label {
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.4;
+  max-width: 130px;
+}
+.proof-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--yellow);
+  opacity: 0.5;
+}
+
+/* ─── SECTIONS ─── */
+.section-wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+.section-alt { background: var(--bg-alt); }
+.section-white { background: var(--white); }
+
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  max-width: 60px;
+}
+
+h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+h2 em { font-style: normal; color: var(--blue); }
+
+.section-intro {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 580px;
+  margin-bottom: 52px;
+  line-height: 1.7;
+}
+.section-intro strong { color: var(--text); font-weight: 600; }
+
+/* ─── PROBLÈME — 3 CARTES ─── */
+.problems-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border: 2px solid var(--border);
+}
+.problem-card {
+  background: var(--white);
+  padding: 36px 32px;
+  position: relative;
+  transition: background 0.2s;
+}
+.problem-card:hover { background: var(--blue-soft); }
+.problem-num {
+  font-family: 'Fraunces', serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 16px;
+  transition: color 0.2s;
+}
+.problem-card:hover .problem-num { color: var(--blue); opacity: 0.2; }
+.problem-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.problem-text {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.problem-impact {
+  margin-top: 18px;
+  padding: 10px 14px;
+  background: var(--yellow-lt);
+  border-left: 3px solid var(--yellow);
+  font-size: 13px;
+  color: #7a5000;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ─── ALERTE COÛT ─── */
+.alert-box {
+  background: var(--blue);
+  padding: 48px 52px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 48px;
+}
+.alert-box h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.alert-box p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+.alert-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.alert-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5;
+}
+.alert-list .icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ─── SOLUTION ─── */
+.solution-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 64px;
+  align-items: start;
+}
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.step-item {
+  display: flex;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.2s;
+  cursor: default;
+}
+.step-item:last-child { border-bottom: none; }
+.step-item:hover .step-num { background: var(--blue); color: var(--white); }
+.step-num {
+  width: 44px; height: 44px;
+  background: var(--blue-soft);
+  border: 2px solid var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--blue);
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.step-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.step-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Solution sidebar */
+.solution-sidebar {
+  background: var(--white);
+  border: 2px solid var(--border);
+  overflow: hidden;
+  position: sticky;
+  top: 80px;
+}
+.sidebar-header {
+  background: var(--bg-alt);
+  padding: 16px 24px;
+  border-bottom: 2px solid var(--border);
+}
+.sidebar-header-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sidebar-header-title {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 2px;
+}
+.sidebar-body { padding: 24px; }
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  margin-bottom: 6px;
+  background: var(--bg);
+  transition: background 0.2s;
+}
+.flow-step:hover { background: var(--blue-soft); }
+.flow-step-icon { font-size: 20px; min-width: 28px; }
+.flow-step-label { font-size: 14px; font-weight: 600; color: var(--text); }
+.flow-step-badge {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  background: var(--green-bg);
+  color: var(--green);
+  border: 1px solid #b7dfc9;
+}
+.flow-arrow {
+  text-align: center;
+  color: var(--border);
+  font-size: 16px;
+  margin: 2px 0 8px;
+}
+.sidebar-cta {
+  margin-top: 24px;
+  background: var(--yellow);
+  padding: 18px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s;
+}
+.sidebar-cta:hover { background: #d99400; }
+.sidebar-cta-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #6b4700;
+  margin-bottom: 4px;
+}
+.sidebar-cta-text {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+/* ─── CAS CONCRETS ─── */
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.case-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.case-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 4px 20px rgba(27,75,130,0.12);
+}
+.case-header {
+  background: var(--bg-alt);
+  border-bottom: 2px solid var(--border);
+  padding: 14px 20px;
+}
+.case-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.case-body { padding: 24px 20px; }
+.case-profile {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.case-situation {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.case-result-box {
+  background: var(--green-bg);
+  border: 1px solid #b7dfc9;
+  padding: 12px 16px;
+}
+.case-result-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+.case-result-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d5e38;
+  line-height: 1.4;
+}
+
+/* ─── OFFRE ─── */
+.offre-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 56px;
+  align-items: start;
+}
+.offre-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 2px solid var(--border);
+}
+.offre-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+  transition: background 0.2s;
+}
+.offre-item:last-child { border-bottom: none; }
+.offre-item:hover { background: var(--blue-soft); }
+.offre-check {
+  width: 28px; height: 28px;
+  background: var(--green-bg);
+  border: 2px solid #b7dfc9;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.offre-item-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.offre-item-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* CTA sidebar */
+.cta-sidebar {
+  background: var(--blue);
+  padding: 36px 32px;
+  position: sticky;
+  top: 80px;
+}
+.cta-sidebar-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 12px;
+}
+.cta-sidebar-title {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.cta-sidebar-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.cta-sidebar-desc strong { color: var(--white); }
+.btn-yellow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--yellow);
+  color: var(--text);
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 16px 24px;
+  text-decoration: none;
+  border: 2px solid var(--yellow);
+  transition: all 0.2s;
+  width: 100%;
+  text-align: center;
+}
+.btn-yellow:hover { background: #d99400; border-color: #d99400; }
+.cta-sidebar-note {
+  margin-top: 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  line-height: 1.5;
+}
+.cta-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin: 20px 0;
+}
+.cta-tel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  justify-content: center;
+  transition: color 0.2s;
+}
+.cta-tel:hover { color: var(--yellow); }
+.cta-tel-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* ─── CTA FINAL ─── */
+.cta-final {
+  background: var(--bg-alt);
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  padding: 80px 40px;
+}
+.cta-final-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+.cta-final h2 { margin-bottom: 16px; }
+.cta-final .section-intro { margin: 0 auto 36px; }
+.cta-final .section-label { justify-content: center; }
+.cta-final .section-label::after { display: none; }
+.cta-final-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.cta-final-note {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.cta-final-note a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ─── MENTIONS LÉGALES ─── */
+.mentions-section {
+  background: var(--white);
+  border-top: 2px solid var(--border);
+  padding: 56px 40px;
+}
+.mentions-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+.mentions-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.mentions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 32px;
+}
+.mentions-block h4 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--yellow);
+  display: inline-block;
+}
+.mentions-block p,
+.mentions-block a {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.8;
+  text-decoration: none;
+}
+.mentions-block a:hover { color: var(--blue); text-decoration: underline; }
+.mentions-rgpd {
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 960px;
+}
+.mentions-rgpd a { color: var(--blue); }
+.mentions-rgpd strong { color: var(--text); font-size: 13px; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--text);
+  padding: 24px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--white);
+}
+.footer-logo span { color: var(--yellow); }
+.footer-text {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.5;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  .topbar { padding: 10px 20px; }
+  .topbar-left { display: none; }
+  nav { padding: 14px 20px; }
+  .hero-inner { grid-template-columns: 1fr; padding: 56px 20px 60px; gap: 40px; }
+  .hero::after { display: none; }
+  .hero-card { max-width: 100%; }
+  .section-wrap { padding: 56px 20px; }
+  .problems-grid, .cases-grid { grid-template-columns: 1fr; }
+  .solution-layout, .offre-layout { grid-template-columns: 1fr; }
+  .solution-sidebar, .cta-sidebar { position: static; }
+  .alert-box { grid-template-columns: 1fr; padding: 32px 24px; gap: 28px; }
+  .proof-bar-inner { justify-content: center; gap: 20px; }
+  .proof-divider { display: none; }
+  .mentions-grid { grid-template-columns: 1fr; gap: 28px; }
+  .mentions-section, .cta-final { padding: 48px 20px; }
+  footer { padding: 20px; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <strong>HAAS BUSINESS BOOSTER</strong> — Conseil en acquisition locale · SIREN 984 236 943
+  </div>
+  <div class="topbar-right">
+    <a href="mailto:haasdigitalis@gmail.com">✉ haasdigitalis@gmail.com</a>
+    <a href="tel:+33661728795" class="topbar-phone">📞 06 61 72 87 95</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-mark">ML</div>
+    <div>
+      <div class="logo-text">Mr <span>Local</span></div>
+      <span class="logo-sub">Appels entrants · Isolation · Bâtiment</span>
+    </div>
+  </div>
+  <a href="https://calendar.app.google/Z15vQGCn6144WR2W9" class="nav-cta" target="_blank">
+    Réserver un diagnostic gratuit →
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Spécialiste isolation & rénovation énergétique</div>
+      <h1>
+        Des particuliers cherchent un isolateur<br>
+        <em>dans votre zone</em> en ce moment.
+      </h1>
+      <p class="hero-sub">
+        La plupart appellent le premier résultat Google. Pas forcément vous. <strong>Mr Local, c'est le système qui fait en sorte que ce premier résultat, c'est vous.</strong>
+      </p>
+      <div class="hero-cta-group">
+        <a href="https://calendar.app.google/Z15vQGCn6144WR2W9" class="btn-primary" target="_blank">
+          Voir combien d'appels vous ratez →
+        </a>
+        <a href="tel:+33661728795" class="btn-secondary">
+          📞 Appel direct : 06 61 72 87 95
+        </a>
+      </div>
+      <div class="hero-reassurance">
+        <span class="reassure-item"><span class="check">✓</span> Diagnostic offert</span>
+        <span class="reassure-item"><span class="check">✓</span> 20 minutes chrono</span>
+        <span class="reassure-item"><span class="check">✓</span> Sans engagement</span>
+        <span class="reassure-item"><span class="check">✓</span> Résultat chiffré</span>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <div class="hero-card-header-dot"></div>
+        <div class="hero-card-header-text">Activité Google locale — Votre secteur</div>
+      </div>
+      <div class="hero-card-body">
+        <div class="metric-row">
+          <div class="metric-icon">🔍</div>
+          <div>
+            <div class="metric-label">Recherches locales / semaine</div>
+            <div class="metric-value"><span>40</span>–80</div>
+            <div class="metric-desc">"isolation combles [ville]" et variantes</div>
+          </div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-icon">📞</div>
+          <div>
+            <div class="metric-label">Appels captés sans système</div>
+            <div class="metric-value">3<span>0%</span></div>
+            <div class="metric-desc">Les 70% restants vont à la concurrence</div>
+          </div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-icon">🏗️</div>
+          <div>
+            <div class="metric-label">Valeur d'un chantier isolation</div>
+            <div class="metric-value">2<span>k–4k€</span></div>
+            <div class="metric-desc">Combles — sans CEE · Toiture en supplément</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-bar-inner">
+    <div class="proof-stat">
+      <div class="proof-num">+5</div>
+      <div class="proof-label">appels qualifiés par semaine dès J+30</div>
+    </div>
+    <div class="proof-divider"></div>
+    <div class="proof-stat">
+      <div class="proof-num">18€</div>
+      <div class="proof-label">coût moyen par appel entrant</div>
+    </div>
+    <div class="proof-divider"></div>
+    <div class="proof-stat">
+      <div class="proof-num">–60%</div>
+      <div class="proof-label">vs lead partagé sur plateforme</div>
+    </div>
+    <div class="proof-divider"></div>
+    <div class="proof-stat">
+      <div class="proof-num">100%</div>
+      <div class="proof-label">leads exclusifs — pas partagés</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLÈME -->
+<div class="section-alt">
+  <div class="section-wrap">
+    <div class="section-label">Le problème</div>
+    <h2>La demande est là. <em>Vous la ratez.</em></h2>
+    <p class="section-intro">Chaque semaine, des dizaines de particuliers cherchent un isolateur dans votre secteur. <strong>La plupart appellent les 3 premiers résultats Google.</strong> Pas forcément vous.</p>
+
+    <div class="problems-grid">
+      <div class="problem-card">
+        <div class="problem-num">01</div>
+        <div class="problem-title">Les appels partent ailleurs</div>
+        <div class="problem-text">Google met en avant les entreprises qui ont optimisé leur fiche et leurs annonces. Sans ça, vous n'existez pas pour ces clients — même si vous êtes à 5 minutes de chez eux.</div>
+        <div class="problem-impact">💸 Chaque appel perdu = un devis que vous ne faites pas</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">02</div>
+        <div class="problem-title">Les plateformes vous coûtent cher</div>
+        <div class="problem-text">Habitatpresto, Quotatis, Angi — vous payez 40 à 60€ un lead partagé entre 3 concurrents. Et vous n'avez aucune garantie de décrocher le chantier.</div>
+        <div class="problem-impact">⚠️ Lead partagé = guerre des prix + marge rognée</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">03</div>
+        <div class="problem-title">L'activité est irrégulière</div>
+        <div class="problem-text">Des semaines saturées, des semaines creuses. Sans flux d'appels régulier, impossible de planifier les équipes, d'embaucher sereinement, de grandir.</div>
+        <div class="problem-impact">📉 Irrégularité = impossible de structurer</div>
+      </div>
+    </div>
+
+    <div class="alert-box">
+      <div>
+        <h3>Ce que ça coûte vraiment chaque semaine</h3>
+        <p>Un chantier isolation combles perdu, c'est 2 000 à 4 000€ de CA qui part chez un concurrent. Pas une fois. Toutes les semaines.</p>
+      </div>
+      <ul class="alert-list">
+        <li><span class="icon">📵</span>Un appel manqué un soir → le client appelle le suivant le lendemain matin</li>
+        <li><span class="icon">⏱️</span>La saison isolation est courte. Chaque semaine perdue ne se rattrape pas</li>
+        <li><span class="icon">🏆</span>Vos concurrents captent les appels que vous ne captez pas. Ils grandissent. Vous stagnez.</li>
+        <li><span class="icon">💡</span>Ce n'est pas un problème de qualité. C'est un problème d'acquisition.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SOLUTION -->
+<div class="section-white">
+  <div class="section-wrap">
+    <div class="section-label">La solution</div>
+    <h2>Mr Local — <em>capter la demande</em><br>qui existe déjà</h2>
+    <p class="section-intro">On ne crée pas de demande artificielle. On capte celle qui cherche <strong>votre type de chantier, dans votre zone, maintenant.</strong></p>
+
+    <div class="solution-layout">
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div>
+            <div class="step-title">Google Business Profile structuré pour l'appel</div>
+            <div class="step-desc">Votre fiche Google devient un vrai outil commercial. Zones couvertes, photos de chantiers réels, avis clients, catégories précises — tout est configuré pour que vous sortiez en premier localement et que le visiteur appelle.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div>
+            <div class="step-title">Campagnes Google Ads orientées appel entrant</div>
+            <div class="step-desc">Des annonces Search ciblées sur les requêtes à forte intention : "isolation combles pas cher", "devis isolation urgent", "entreprise isolation [ville]". Le bouton d'appel direct s'affiche sur mobile. Le client appelle en un clic.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div>
+            <div class="step-title">Suivi précis des appels entrants</div>
+            <div class="step-desc">Vous savez combien d'appels viennent de Google, quels mots-clés les ont déclenchés, quels créneaux sont les plus actifs. On pilote sur des chiffres réels, pas sur des impressions.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div>
+            <div class="step-title">Optimisation hebdomadaire</div>
+            <div class="step-desc">Chaque semaine, on coupe ce qui ne génère pas d'appels et on amplifie ce qui marche. L'objectif : réduire le coût par chantier qualifié semaine après semaine.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-header-label">Flux d'acquisition</div>
+          <div class="sidebar-header-title">Comment ça fonctionne</div>
+        </div>
+        <div class="sidebar-body">
+          <div class="flow-step">
+            <span class="flow-step-icon">🔍</span>
+            <span class="flow-step-label">Recherche Google locale</span>
+            <span class="flow-step-badge">LIVE</span>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">
+            <span class="flow-step-icon">📌</span>
+            <span class="flow-step-label">Votre annonce en 1er</span>
+            <span class="flow-step-badge">CIBLÉ</span>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">
+            <span class="flow-step-icon">📞</span>
+            <span class="flow-step-label">Appel direct entrant</span>
+            <span class="flow-step-badge">TRACÉ</span>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">
+            <span class="flow-step-icon">📋</span>
+            <span class="flow-step-label">Devis → Chantier</span>
+            <span class="flow-step-badge">SIGNÉ</span>
+          </div>
+          <a href="https://calendar.app.google/Z15vQGCn6144WR2W9" class="sidebar-cta" target="_blank">
+            <div class="sidebar-cta-label">Première étape</div>
+            <div class="sidebar-cta-text">Appel diagnostic — 20 min →</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAS CONCRETS -->
+<div class="section-alt">
+  <div class="section-wrap">
+    <div class="section-label">Cas concrets</div>
+    <h2>Ce que ça donne <em>sur le terrain</em></h2>
+    <p class="section-intro">Trois situations réelles. Ce que ça représente concrètement en chantiers.</p>
+
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-tag">Indépendant · Isolation combles</div>
+        </div>
+        <div class="case-body">
+          <div class="case-profile">2 techniciens · 8 chantiers/mois · Bouche-à-oreille + plateforme</div>
+          <div class="case-situation">Il ne ressort pas sur Google. 3 concurrents le précèdent sur ses propres codes postaux. Il paie des leads partagés sans maîtriser son acquisition. Activité correcte mais plafonnée.</div>
+          <div class="case-result-box">
+            <div class="case-result-label">Résultat à J+30</div>
+            <div class="case-result-text">+5 appels qualifiés/semaine · Coût par appel : 18€</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-tag">PME · Rénovation énergétique</div>
+        </div>
+        <div class="case-body">
+          <div class="case-profile">15 salariés · Réseau régional · Budget Google Ads actif</div>
+          <div class="case-situation">Des particuliers cherchent "isolation combles urgent" ou "devis isolation rapide" — requêtes à forte intention d'achat. Ces appels partent à la concurrence faute d'annonce ciblée sur les bons mots-clés.</div>
+          <div class="case-result-box">
+            <div class="case-result-label">Résultat</div>
+            <div class="case-result-text">CPL ramené à 18€ vs 45€ sur plateforme partagée</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-tag">Réseau · Multi-agences</div>
+        </div>
+        <div class="case-body">
+          <div class="case-profile">3 agences · 3 zones · Besoin de cohérence locale</div>
+          <div class="case-situation">Chaque agence a sa zone géographique, mais les remontées Google locales ne sont pas maîtrisées secteur par secteur. Appels mal routés, opportunités perdues par agence chaque semaine.</div>
+          <div class="case-result-box">
+            <div class="case-result-label">Résultat</div>
+            <div class="case-result-text">Système reproductible par agence · Déployé en 3 semaines</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OFFRE -->
+<div class="section-white">
+  <div class="section-wrap">
+    <div class="section-label">L'offre</div>
+    <h2>Simple. Concret. <em>Orienté résultat.</em></h2>
+    <p class="section-intro">On ne vend pas de la prestation. On construit un système qui génère des appels entrants qualifiés dans votre zone d'intervention.</p>
+
+    <div class="offre-layout">
+      <div class="offre-list">
+        <div class="offre-item">
+          <div class="offre-check">✓</div>
+          <div>
+            <div class="offre-item-title">Google Business Profile structuré pour l'appel</div>
+            <div class="offre-item-desc">Fiche optimisée, zones d'intervention définies, photos chantiers, catégories d'activité précises, horaires, Q&R. Tout ce qu'il faut pour sortir en premier localement.</div>
+          </div>
+        </div>
+        <div class="offre-item">
+          <div class="offre-check">✓</div>
+          <div>
+            <div class="offre-item-title">Campagnes Google Ads Search — isolation locale</div>
+            <div class="offre-item-desc">Mots-clés à intention forte, extensions d'appel direct, ciblage géographique précis par code postal, enchères orientées appel entrant.</div>
+          </div>
+        </div>
+        <div class="offre-item">
+          <div class="offre-check">✓</div>
+          <div>
+            <div class="offre-item-title">Suivi & optimisation hebdomadaire</div>
+            <div class="offre-item-desc">Rapport d'appels chaque semaine. Ajustements budgets, exclusion des mots-clés non qualifiés, amplification de ce qui génère des chantiers.</div>
+          </div>
+        </div>
+        <div class="offre-item">
+          <div class="offre-check">✓</div>
+          <div>
+            <div class="offre-item-title">Objectif : coût par chantier qualifié</div>
+            <div class="offre-item-desc">On pilote sur les résultats réels — nombre d'appels entrants, coût par appel, taux de transformation devis. Pas sur le nombre de clics ou d'impressions.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-sidebar">
+        <div class="cta-sidebar-eyebrow">Première étape</div>
+        <div class="cta-sidebar-title">Un appel diagnostic de 20 min.</div>
+        <p class="cta-sidebar-desc">
+          On analyse votre situation. On vous dit <strong>exactement combien de demandes locales partent à la concurrence</strong> dans votre zone en ce moment.
+        </p>
+        <a href="https://calendar.app.google/Z15vQGCn6144WR2W9" class="btn-yellow" target="_blank">
+          Réserver mon diagnostic gratuit →
+        </a>
+        <div class="cta-sidebar-note">Sans engagement · Résultat chiffré · 20 min</div>
+        <hr class="cta-divider">
+        <span class="cta-tel-label">Ou appelez directement</span>
+        <a href="tel:+33661728795" class="cta-tel">
+          📞 06 61 72 87 95
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <div class="cta-final-inner">
+    <div class="section-label" style="justify-content:center;">Passez à l'action</div>
+    <h2>Des particuliers cherchent<br><em>un isolateur dans votre zone.</em><br>En ce moment.</h2>
+    <p class="section-intro">Chaque jour sans système, ce sont des appels qui partent à la concurrence. Prenez 20 minutes pour voir ce qui est possible dans votre secteur.</p>
+    <div class="cta-final-buttons">
+      <a href="https://calendar.app.google/Z15vQGCn6144WR2W9" class="btn-primary" target="_blank">
+        Réserver mon diagnostic gratuit →
+      </a>
+      <a href="tel:+33661728795" class="btn-secondary">
+        📞 06 61 72 87 95
+      </a>
+    </div>
+    <div class="cta-final-note">
+      Diagnostic offert · Sans engagement · Résultat chiffré en 20 minutes<br>
+      <a href="mailto:haasdigitalis@gmail.com">haasdigitalis@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- MENTIONS LÉGALES -->
+<div class="mentions-section">
+  <div class="mentions-inner">
+    <div class="mentions-title">Mentions légales</div>
+    <div class="mentions-grid">
+      <div class="mentions-block">
+        <h4>Éditeur</h4>
+        <p>
+          HAAS BUSINESS BOOSTER<br>
+          SAS — Société par actions simplifiée<br>
+          SIREN : 984 236 943<br>
+          SIRET : 984 236 943 00010<br>
+          APE : 70.22Z — Conseil pour les affaires<br>
+          Société active depuis le 17/12/2023<br>
+          Directeur de publication : Olivier HAAS
+        </p>
+      </div>
+      <div class="mentions-block">
+        <h4>Contact</h4>
+        <p>
+          3 Rue de l'Alose<br>
+          34420 Portiragnes, France<br><br>
+          <a href="tel:+33661728795">📞 +33 6 61 72 87 95</a><br>
+          <a href="mailto:haasdigitalis@gmail.com">✉ haasdigitalis@gmail.com</a>
+        </p>
+      </div>
+      <div class="mentions-block">
+        <h4>Responsabilité</h4>
+        <p>
+          Les informations présentes sur ce site sont fournies à titre indicatif. HAAS BUSINESS BOOSTER ne saurait être tenu responsable d'erreurs ou omissions dans les contenus publiés. Les résultats présentés sont des moyennes constatées et ne constituent pas une garantie contractuelle.
+        </p>
+      </div>
+    </div>
+    <div class="mentions-rgpd">
+      <strong>Protection des données personnelles (RGPD)</strong><br>
+      Conformément au Règlement Général sur la Protection des Données (UE 2016/679) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression des données vous concernant. Pour exercer ces droits : <a href="mailto:haasdigitalis@gmail.com">haasdigitalis@gmail.com</a>. Les données collectées via ce site sont utilisées uniquement dans le cadre de notre relation commerciale et ne sont jamais cédées à des tiers. Conformément à l'article L.223-2 du Code de la consommation, vous pouvez vous inscrire sur la liste d'opposition au démarchage téléphonique : <a href="https://www.bloctel.gouv.fr" target="_blank">www.bloctel.gouv.fr</a>.
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Mr <span>Local</span></div>
+  <div class="footer-text">
+    © 2025 HAAS BUSINESS BOOSTER · SIREN 984 236 943 · 3 Rue de l'Alose, 34420 Portiragnes<br>
+    <a href="tel:+33661728795" style="color:rgba(255,255,255,0.4); text-decoration:none;">06 61 72 87 95</a> ·
+    <a href="mailto:haasdigitalis@gmail.com" style="color:rgba(255,255,255,0.4); text-decoration:none;">haasdigitalis@gmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
